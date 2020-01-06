@@ -15,6 +15,7 @@ public class ShareEntry {
         this.shareId = shareId;
     }
 
+
     public String getObjectId(){
         return objectId;
     }
