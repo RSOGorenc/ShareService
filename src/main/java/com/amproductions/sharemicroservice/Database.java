@@ -27,6 +27,7 @@ class Database {
     static Document GetSharedPhotos(String userId){
         try {
 
+
             FindIterable<Document> result = collection.find(eq("shareUsers", userId));
 
             Document res = new Document();
