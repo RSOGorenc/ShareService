@@ -60,4 +60,20 @@ class Database {
         return true;
     }
 
+    @SuppressWarnings("unchecked")
+    static boolean DeleteShareFromPhoto(ShareEntry deleteShare){
+        try {
+
+            collection.updateOne(
+                    new BasicDBObject("_id", new ObjectId(deleteShare.getObjectId())),
+                    new BasicDBObject("$pull", new BasicDBObject("shareUsers", deleteShare.getShareId()))
+            );
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }

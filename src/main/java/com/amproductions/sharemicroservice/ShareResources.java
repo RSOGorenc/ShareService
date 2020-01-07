@@ -44,4 +44,21 @@ public class ShareResources {
         return  Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     }
 
+
+
+
+    @DELETE
+    public Response deleteShare(ShareEntry deleteShare) {
+        try {
+
+            if(Database.DeleteShareFromPhoto(deleteShare)){
+                return Response.status(Response.Status.CREATED).build();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return  Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+    }
+
 }
