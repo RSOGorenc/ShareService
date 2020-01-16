@@ -11,5 +11,5 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 FROM openjdk:11-jre-slim
 COPY --from=build /home/app/target/share-microservice-1.0.0.jar /usr/local/lib/share-microservice.jar
-EXPOSE 8082
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/local/lib/share-microservice.jar"]
