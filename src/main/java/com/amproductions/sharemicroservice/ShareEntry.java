@@ -5,20 +5,20 @@ import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 public class ShareEntry {
-    private String objectId;
+    private String imageId;
     private String shareId;
 
     @JsonbCreator
-    public ShareEntry(@JsonbProperty("objectId")String objectId,
+    public ShareEntry(@JsonbProperty("imageId") String imageId,
                         @JsonbProperty("shareId")String shareId){
-        this.objectId = objectId;
+        this.imageId = imageId;
         this.shareId = shareId;
     }
 
 
 
-    public String getObjectId(){
-        return objectId;
+    public String getImageId(){
+        return imageId;
     }
 
     public String getShareId(){

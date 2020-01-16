@@ -19,7 +19,7 @@ import static com.mongodb.client.model.Filters.eq;
 
 
 class Database {
-    private static MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://192.168.99.100:27017"));
+    private static MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://35.240.42.72:27017"));
     private static MongoDatabase database = mongoClient.getDatabase("imagePlatform");
     private static MongoCollection collection = database.getCollection("images");
 
@@ -34,7 +34,6 @@ class Database {
             for (Document doc: result) {
                res.append(doc.getString("userId"), doc.getString("imageId"));
             }
-            System.out.println(res);
             return res;
 
         } catch (Exception e){
@@ -49,7 +48,7 @@ class Database {
         try {
 
             collection.updateOne(
-                    new BasicDBObject("_id", new ObjectId(addShare.getObjectId())),
+                    new BasicDBObject("imageId", addShare.getImageId()),
                     new BasicDBObject("$push", new BasicDBObject("shareUsers", addShare.getShareId()))
             );
 
@@ -65,7 +64,7 @@ class Database {
         try {
 
             collection.updateOne(
-                    new BasicDBObject("_id", new ObjectId(deleteShare.getObjectId())),
+                    new BasicDBObject("imageId", deleteShare.getImageId()),
                     new BasicDBObject("$pull", new BasicDBObject("shareUsers", deleteShare.getShareId()))
             );
 
